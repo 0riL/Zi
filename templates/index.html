@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Roblox Username Hunter</title>
+    <link rel="stylesheet" href="/static/css/styles.css" />
+</head>
+<body>
+    <h1>🤖 Roblox Username Hunter</h1>
+    <div id="status">Status: Idle</div>
+    <script>
+        async function fetchStats() {
+            const res = await fetch("/stats");
+            const data = await res.json();
+            document.getElementById("status").innerText = "Total Checked: " + data.total_checked + ", Available: " + data.available;
+        }
+        fetchStats();
+        setInterval(fetchStats, 5000);
+    </script>
+</body>
+</html>
